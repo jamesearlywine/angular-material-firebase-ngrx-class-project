@@ -1,0 +1,44 @@
+<section
+  class="login-form"
+>
+  <form
+    [formGroup]="form"
+    fxLayout="column"
+    fxLayoutAlign="center center"
+    fxLayoutGap="10px"
+    (submit)="login()"
+  >
+    <mat-form-field>
+      <input
+        matInput
+        formControlName="email"
+        type="email"
+        placeholder="Email address"
+      >
+      <mat-error *ngIf="form.get('email').hasError('required')">Email is required.</mat-error>
+      <mat-error *ngIf="form.get('email').touched && form.get('email').hasError('email')">Valid email is required.</mat-error>
+
+    </mat-form-field>
+    <mat-form-field>
+      <input
+        matInput
+        formControlName="password"
+        type="password"
+        placeholder="Password"
+      >
+      <mat-error *ngIf="form.get('password').hasError('required')">Password is required.</mat-error>
+    </mat-form-field>
+    <button
+      *ngIf="!(isLoading$ | async)"
+      mat-raised-button
+      type="submit"
+      color="primary"
+      [disabled]="form.invalid"
+    >Login</button>
+    <mat-spinner
+      *ngIf="isLoading$ | async"
+    ></mat-spinner>
+
+  </form>
+
+</section>

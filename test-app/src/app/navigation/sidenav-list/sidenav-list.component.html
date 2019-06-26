@@ -1,0 +1,14 @@
+<mat-nav-list>
+  <a *ngIf="isAuthenticated$ | async" mat-list-item class="anchor-button" routerLink="/training" (click)="closeSidenav()">
+    <mat-icon>accessibility_new</mat-icon><span class="nav-caption">Training</span>
+  </a>
+  <a *ngIf="!(isAuthenticated$ | async)" mat-list-item class="anchor-button" routerLink="/signup" (click)="closeSidenav()">
+    <mat-icon>face</mat-icon><span class="nav-caption">Signup</span>
+  </a>
+  <a *ngIf="!(isAuthenticated$ | async)" mat-list-item class="anchor-button" routerLink="/login" (click)="closeSidenav()">
+    <mat-icon>exit_to_app</mat-icon><span class="nav-caption">Login</span>
+  </a>
+  <a *ngIf="isAuthenticated$ | async" mat-list-item class="anchor-button" routerLink="/" (click)="onClickLogout()">
+    <mat-icon>eject</mat-icon><span class="nav-caption">Logout</span>
+  </a>
+</mat-nav-list>

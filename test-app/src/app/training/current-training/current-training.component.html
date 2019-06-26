@@ -1,0 +1,24 @@
+<section class="current-training" fxLayout="column" fxLayoutAlign="center center">
+  <mat-progress-spinner mode="determinate" [value]="progress"></mat-progress-spinner>
+  <h2><span *ngIf="(selectedExercise$ | async) as selectedExercise">{{selectedExercise.name}}</span></h2>
+  <h1>{{progress}}%</h1>
+  <p *ngIf="progress < 100">Keep on going, you can do it!</p>
+  <p *ngIf="progress >= 100">You did it! Good job!</p>
+  <div class="buttons-container" fxFlex fxLayout="row" fxLayoutAlign="center" fxLayoutGap="10px">
+    <button
+      *ngIf="timer"
+      mat-raised-button
+      color="accent"
+      (click)="onClickStop()"
+    >Stop</button>
+    <!--
+    <button
+      *ngIf="!timer"
+      mat-raised-button
+      color="accent"
+      (click)="onClickExit()"
+    >New Exercise</button>
+    -->
+  </div>
+
+</section>
